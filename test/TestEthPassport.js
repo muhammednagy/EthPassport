@@ -47,11 +47,25 @@ contract("EthPassport", accounts => {
 
 	it("is able to enroll", async () => {
         //ensures User can enroll himself
-        assert.equal(await ethpassport.enroll.call("Mohamed", "Nagy","01072000","Egyptian","Egypt",{ from: firstAccount }), true);
+        assert.equal(await ethpassport.enroll.call("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: firstAccount }), true);
 	});
 
 
-	it("is able to get his ID Info", async () => {
+	it("is able to get his passport Info", async () => {
+        //ensures User can enroll himself
+        await ethpassport.enroll("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: firstAccount })
+        passport = await ethpassport.myPassport.call({ from: firstAccount });
+        passport[0] = passport[0].toNumber();
+        assert.equal(passport[0], 1);
+        assert.equal(passport[1], "Mohamed");
+        assert.equal(passport[2], "Nagy");
+        assert.equal(passport[3], "01/07/2000");
+        assert.equal(passport[4], "Egyptian");
+        assert.equal(passport[5], "Egypt");
+	});
+
+
+    it("is able to get his id Info", async () => {
         //ensures User can enroll himself
         await ethpassport.enroll("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: firstAccount })
         id = await ethpassport.myID.call({ from: firstAccount });
@@ -60,7 +74,7 @@ contract("EthPassport", accounts => {
         assert.equal(id[1], "Mohamed");
         assert.equal(id[2], "Nagy");
         assert.equal(id[3], "Egyptian");
-	});
+    });
 
 	it("isn't able to get his ID Info without enrolling first", async () => {
         try {
