@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../build/contracts/EthPassport.json'
+import ethereumPassportContract from '../build/contracts/EthPassport.json'
 import getWeb3 from './utils/getWeb3'
 
 import './css/oswald.css'
@@ -52,27 +52,27 @@ class App extends Component {
      */
 
      const contract = require('truffle-contract')
-     const simpleStorage = contract(SimpleStorageContract)
-     simpleStorage.setProvider(this.state.web3.currentProvider)
+     const ethereumPassport = contract(ethereumPassportContract)
+     ethereumPassport.setProvider(this.state.web3.currentProvider)
 
-    // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
+    // Declaring this for later so we can chain functions on ethereumPassport.
+    var ethereumPassportInstance
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
-        // console.log(simpleStorageInstance)
+      ethereumPassport.deployed().then((instance) => {
+        ethereumPassportInstance = instance
+        // console.log(ethereumPassportInstance)
         // Stores a given value, 5 by default.
-        // return simpleStorageInstance.set(10, {from: accounts[0]})
+        // return ethereumPassportInstance.set(10, {from: accounts[0]})
       // }).then((result) => {
         // Get the value from the contract to prove it worked.
-        this.setState({contract: simpleStorageInstance, account: accounts[0]} )
-        // simpleStorageInstance.enroll("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: accounts[0] })
-        return simpleStorageInstance.isSet.call(accounts[0])
+        this.setState({contract: ethereumPassportInstance, account: accounts[0]} )
+        // ethereumPassportInstance.enroll("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: accounts[0] })
+        return ethereumPassportInstance.isSet.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return simpleStorageInstance.myPassport.call(accounts[0])
+        return ethereumPassportInstance.myPassport.call(accounts[0])
         .then((result) => {
           return this.setState({Id: result[0].e, FN: result[1], LN: result[2], BD: result[3], citizenship: result[4], CountryOfBirth: result[5]})
         })
