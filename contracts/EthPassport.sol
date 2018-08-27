@@ -22,8 +22,14 @@ contract EthPassport is Pausable{
         /** Compare two strings */
        return keccak256(a) == keccak256(b);
     }
-   
-   
+
+   function  isSet() public view returns(bool) {
+           if (passports[msg.sender].isSet) {
+               return true;
+           } else {
+               return false;
+           }
+   }
     function  myID() public view OnlyOwner returns(uint _IdN , string _FN, string _LN, string _citizenship) {
             /** Get User's ID info */
            _FN = passports[msg.sender].FN ;

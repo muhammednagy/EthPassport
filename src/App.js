@@ -65,13 +65,17 @@ class App extends Component {
         // console.log(simpleStorageInstance)
         // Stores a given value, 5 by default.
         // return simpleStorageInstance.set(10, {from: accounts[0]})
-      }).then((result) => {
+      // }).then((result) => {
         // Get the value from the contract to prove it worked.
+        this.setState({contract: simpleStorageInstance, account: accounts[0]} )
         // simpleStorageInstance.enroll("Mohamed", "Nagy","01/07/2000","Egyptian","Egypt",{ from: accounts[0] })
-        return simpleStorageInstance.myPassport.call(accounts[1])
+        return simpleStorageInstance.isSet.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return this.setState({contract: simpleStorageInstance, account: accounts[0],Id: result[0].e, FN: result[1], LN: result[2], BD: result[3], citizenship: result[4], CountryOfBirth: result[5]})
+        return simpleStorageInstance.myPassport.call(accounts[0])
+        .then((result) => {
+          return this.setState({Id: result[0].e, FN: result[1], LN: result[2], BD: result[3], citizenship: result[4], CountryOfBirth: result[5]})
+        })
       })
     })
   }
