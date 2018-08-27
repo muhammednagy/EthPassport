@@ -107,7 +107,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://github.com/muhammednagy/EthPassport#readme",
+  "homepage": "/",
   "dependencies": {
     "dotenv": "^2.0.0",
     "react": "^15.4.2",
