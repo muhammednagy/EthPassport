@@ -1,6 +1,7 @@
 pragma solidity ^0.4.23;
 
 import 'openzeppelin-solidity/contracts/lifecycle/Pausable.sol';
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 
@@ -10,7 +11,7 @@ import 'openzeppelin-solidity/contracts/lifecycle/Pausable.sol';
 @description Universal idientity on the ethereum blockchain!  
 */
 
-contract EthPassport is Pausable{
+contract EthPassport is Ownable, Pausable {
     struct Passport {uint Id; string FN; string LN; string BD; string citizenship; string  CountryOfBirth; bool isSet;}
     uint count =  0;
     mapping  (address => Passport) passports ;
