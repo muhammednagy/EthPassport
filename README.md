@@ -42,4 +42,9 @@ If you'd like to play around with the contract head on over to https://remix.eth
 
 ## We are live on Rinkenby!
 
+
 Deploy the contract with `truffle migrate --network rinkeby` after configuring the correct mnenomic and API key within truffle.js if you'd like to deploy the contract yourself on the rinkeby test network. This is not required to play on rinkeby. Currently the EthPassport contract is deployed at `0x5679051C3381ea527a71D454593f784b4A67f8A6`
+
+##  How to deploy on Rinkenby
+open `truffle.js` file then update `mnemonic` var with your mnemonic wallet and add your infura Rinkenby key after `https://rinkeby.infura.io/v3/`
+then run `truffle migrate --network rinkeby`.
