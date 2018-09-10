@@ -86,8 +86,8 @@ class App extends Component {
     const account = this.state.account
 
     var FN = document.getElementById('FN').value
-    var LN = document.getElementById('FN').value
-    var BD = document.getElementById('FN').value
+    var LN = document.getElementById('LN').value
+    var BD = document.getElementById('BD').value
     var citizenship = document.getElementById('citizenship').value
     var CountryOfBirth = document.getElementById('CountryOfBirth').value
 
