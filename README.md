@@ -31,7 +31,7 @@ truffle test
 
 The front end interface is run with lite-server for local testing purposes. Use the following command from within the EthPassport directory to run:
 
-`npm run dev`
+`npm run start`
 
 A browser window should pop up automagically after the command is run pointing to http://localhost:3000, otherwise manually type this address in your preferred browser. Metamask is required to send transactions.
 
